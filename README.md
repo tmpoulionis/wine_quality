@@ -1,23 +1,50 @@
-# Wine Quality Analysis 🍷
+# 🍷 Wine Quality Analysis Project
 
-## Overview
-This project combines chemical analysis with wine quality assessment. We collected wine samples (both red and white) from various wineries, each rated on a scale from 0 to 10.
+A semi-supervised machine learning project to classify wine types (red/white) and predict wine quality using chemical features. 
 
-## What's Inside?
-- **DataFrames:** Two main datasets – one with labels and one without.
-- **Visualizations:** Images that show the distributions of wine types and quality ratings.
+---
 
-## Labeling the Wine Samples 🍇
+## 📌 Project Overview
+A biological laboratory collected **labeled and unlabeled wine samples** (red and white):
+1. **Classify unlabeled wines** using a semi-supervised approach.
+2. **Predict wine quality** (0-10 scale) and identify key chemical drivers of quality.
+
+**Datasets Used**:
+- `wine_full` dataset: Labeled data (wine type: red/white).
+- `wine_missing` dataset: Unlabeled data.
+
+![Distribution of labeled vs. unlabeled data](images/label_distribution.png)
+
+---
+
+## 🛠️ Data Preparation & Semi-Supervised Labeling
+- Explored data distributions and performed cleaning.
+- Scaled features to normalize the data.
+
+## 🍇 Semi-Supervised Labeling Wine Samples
 We employed a semi-supervised approach to assign red or white labels to the unlabeled samples:
-- **Exploratory Data Analysis (EDA):** Cleaned and scaled the data.
 - **Model Training:** Built a Random Forest model on the labeled data using balanced weights to handle class imbalances.
 - **Semi-Supervised Labeling:** Predicted probabilities for unlabeled samples and set a threshold to assign labels confidently. This process successfully labeled **3823** new samples, with iterative retraining to cover most unknowns.
 
-## Evaluating Wine Quality 🍾
-Next, we shifted focus to assessing wine quality:
-- **Distribution Check:** Analyzed the quality score distribution, noting an imbalance in the ratings.
-- **Regression Trees:** Trained decision regression trees with wine quality as the target. We experimented with various parameter combinations and measured performance using Mean Absolute Error (MAE).
-- **Optimization:** Employed grid search with cross-validation to fine-tune the model.
-- **Insights:** Key factors influencing quality turned out to be chlorides, alcohol, density, sulphates, and free sulfur dioxide, rather than sugars or acidity.
+---
 
-## Project Structure 📂
+## 🍇 Wine Quality Prediction
+
+### 📊 Analyzing Quality Distribution
+- Observed **imbalanced quality scores** in the `wine_full` dataset (e.g., more medium-quality wines).
+- Addressed potential bias from this imbalance during modeling.
+
+![Quality score distribution](images/wine_quality.png) *Replace with your image path*
+
+### 🌳 Model Training
+- Trained **Decision Tree Regression** models to predict quality scores.
+- Manually tested hyperparameters and used **Grid Search with Cross-Validation** to optimize performance.
+- Evaluated models using **Mean Absolute Error (MAE)**.
+- Extracted **feature importances** and **decision rules** from the best-performing tree.
+
+---
+
+## 🔬 Key Findings  
+- Semi-supervised labeling **boosted dataset size** effectively.  
+- Quality prediction models highlighted **non-intuitive chemical factors** (e.g., chlorides over sugars).  
+- Decision trees provided **interpretable rules** for quality assessment. 
