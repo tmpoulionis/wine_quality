@@ -34,7 +34,7 @@ We employed a semi-supervised approach to assign red or white labels to the unla
 - Observed **imbalanced quality scores** in the `wine_full` dataset (e.g., more medium-quality wines).
 - Addressed potential bias from this imbalance during modeling.
 
-![Quality score distribution](images/wine_quality.png) *Replace with your image path*
+![Quality score distribution](images/wine_quality.png)
 
 ### 🌳 Model Training
 - Trained **Decision Tree Regression** models to predict quality scores.
